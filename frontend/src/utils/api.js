@@ -1,9 +1,18 @@
 import axios from 'axios'
 
-const RAW_API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+// 배포 환경(vercel 등)에서는 백엔드 URL 고정, 로컬에서는 env 또는 localhost
+const DEFAULT_PRODUCTION_API = 'https://healthcare-backend-dotj.onrender.com/api'
+const getDefaultBase = () => {
+  if (typeof window !== 'undefined' && window.location?.hostname && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return DEFAULT_PRODUCTION_API
+  }
+  return 'http://localhost:8080'
+}
+
+const RAW_API_BASE = import.meta.env.VITE_API_BASE_URL || getDefaultBase()
 
 const ensureApiPath = (url) => {
-  if (!url) return 'http://localhost:8080/api'
+  if (!url) return getDefaultBase().startsWith('http://localhost') ? 'http://localhost:8080/api' : DEFAULT_PRODUCTION_API
   const trimmed = url.replace(/\/+$/, '')
   if (trimmed.endsWith('/api')) {
     return trimmed
@@ -50,5 +59,3 @@ api.interceptors.response.use(
 )
 
 export default api
-
-
