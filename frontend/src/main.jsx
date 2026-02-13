@@ -1,10 +1,11 @@
 /** 앱 엔트리포인트 */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider, useAuth } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import App from './App.jsx'
+import Landing from './pages/Landing.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import PlanDetail from './pages/PlanDetail.jsx'
@@ -26,6 +27,12 @@ import AdminPage from './pages/AdminPage.jsx'
 
 import './index.css' /**tailwind import */
 
+/** "/" 접속 시: 비로그인 → 랜딩, 로그인 → 대시보드 */
+function HomePage() {
+  const { user } = useAuth()
+  return user ? <App /> : <Landing />
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>
@@ -33,14 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route
-                        path="/"
-                        element={
-                            <ProtectedRoute>
-                                <App />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/" element={<HomePage />} />
                     <Route
                         path="/plans/:matchId/:weekStart"
                         element={
