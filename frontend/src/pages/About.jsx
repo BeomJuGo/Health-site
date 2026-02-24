@@ -44,19 +44,25 @@ function About() {
           <CardHeader>
             <CardTitle className="text-slate-800">문의</CardTitle>
             <CardDescription className="text-slate-600">
-              서비스 관련 문의나 제안 사항이 있으시면 GitHub 저장소 이슈 또는 프로젝트 페이지를 통해 연락해 주시면 감사하겠습니다.
+              서비스 관련 문의나 제안 사항이 있으시면 아래 연락처 또는 GitHub 저장소를 통해 연락해 주시면 감사하겠습니다.
             </CardDescription>
-            <CardContent className="pt-0">
-              <a
-                href="https://github.com/BeomJuGo/Health-site"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-600 hover:underline font-medium"
-              >
-                GitHub: BeomJuGo/Health-site
-              </a>
-            </CardContent>
           </CardHeader>
+          <CardContent className="pt-0 space-y-2">
+            <p className="text-slate-700 font-medium">
+              이메일:{' '}
+              <a href="mailto:lom0097@naver.com" className="text-indigo-600 hover:underline">
+                lom0097@naver.com
+              </a>
+            </p>
+            <a
+              href="https://github.com/BeomJuGo/Health-site"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-600 hover:underline font-medium"
+            >
+              GitHub: BeomJuGo/Health-site
+            </a>
+          </CardContent>
         </Card>
 
         <div className="flex flex-wrap gap-4 justify-center pt-4">
@@ -71,6 +77,12 @@ function About() {
             className="inline-flex items-center px-5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 font-medium transition-colors"
           >
             개인정보처리방침
+          </Link>
+          <Link
+            to="/terms"
+            className="inline-flex items-center px-5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 font-medium transition-colors"
+          >
+            이용약관
           </Link>
         </div>
       </div>
