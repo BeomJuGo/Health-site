@@ -25,6 +25,7 @@ import AiRecommendation from './pages/AiRecommendation.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 import Privacy from './pages/Privacy.jsx'
 import About from './pages/About.jsx'
+import Terms from './pages/Terms.jsx'
 
 import './index.css' /**tailwind import */
 
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="/" element={<App />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/terms" element={<Terms />} />
                     <Route
                         path="/plans/:matchId/:weekStart"
                         element={
