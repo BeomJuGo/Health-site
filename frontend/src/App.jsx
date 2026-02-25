@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
 import StaggeredMenu from '@/components/StaggeredMenu'
 import GradientText from '@/components/GradientText'
+import AdSection from '@/components/AdSection'
 import './App.css'
 import './index.css'
 import healthwebLogo from './assets/healthweb logo.png'
@@ -366,6 +367,8 @@ function App() {
             }}
           />
         </section>
+
+        <AdSection />
 
         <footer className="pb-6 pt-2 text-center text-sm text-slate-400">
           © 2025 HealthWeb —{' '}
